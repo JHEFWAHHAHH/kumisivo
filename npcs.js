@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { ASSETS, WORLD } from './config.js';
-import { terrainHeight } from './terrain.js';
+import { ASSETS, WORLD } from 'config.js';
+import { terrainHeight } from 'terrain.js';
 
 function randRange(a, b) {
   return a + Math.random() * (b - a);
