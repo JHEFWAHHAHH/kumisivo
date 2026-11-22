@@ -1,6 +1,6 @@
 import * as THREE from 'three';
-import { PLAYER, WORLD } from './config.js';
-import { terrainHeight } from './terrain.js';
+import { PLAYER, WORLD } from 'config.js';
+import { terrainHeight } from 'terrain.js';
 
 export class FirstPersonPlayer {
   constructor(camera, domElement) {
