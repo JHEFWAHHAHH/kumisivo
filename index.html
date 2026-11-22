@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="eng">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark" />
+  <title>Кумесево — степь</title>
+  <link rel="stylesheet" href="./src/style.css" />
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="app"></div>
+
+  <div id="loading" class="screen visible">
+    <div class="panel narrow">
+      <div class="eyebrow">КУМЕСЕВО</div>
+      <h1>МОНГОЛЬСКАЯ СТЕПЬ</h1>
+      <p id="loadingText">Подготавливаю территорию…</p>
+      <div class="loadbar"><span id="loadFill"></span></div>
+    </div>
+  </div>
+
+  <div id="start" class="screen">
+    <div class="panel">
+      <div class="eyebrow">КУМЕСЕВО</div>
+      <h1>СТЕПЬ</h1>
+      <p>Сейчас только фундамент мира: территория, управление, люди и кони. Никаких драк и деревень.</p>
+      <div class="controls">
+        <span><b>WASD</b> идти</span>
+        <span><b>SHIFT</b> бег</span>
+        <span><b>SPACE</b> прыжок</span>
+        <span><b>CTRL</b> пригнуться</span>
+        <span><b>F3</b> диагностика</span>
+      </div>
+      <button id="enterButton" type="button">ВОЙТИ В СТЕПЬ</button>
+      <small>Мышь — обзор · ESC — отпустить курсор</small>
+    </div>
+  </div>
+
+  <div id="pause" class="pause">Кликни по экрану, чтобы продолжить</div>
+  <div id="crosshair"><i></i><b></b></div>
+  <div id="debug"></div>
+  <div id="vignette"></div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
