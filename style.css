@@ -1,0 +1,150 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #f3efe5;
+  background: #111;
+}
+
+* { box-sizing: border-box; }
+html, body, #app { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+body { user-select: none; }
+canvas { display: block; }
+
+.screen {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 260ms ease;
+  background:
+    linear-gradient(to bottom, rgba(8, 12, 13, .35), rgba(7, 8, 7, .70)),
+    radial-gradient(circle at 50% 35%, rgba(196, 165, 110, .14), transparent 52%);
+  backdrop-filter: blur(7px);
+}
+.screen.visible { opacity: 1; pointer-events: auto; }
+
+.panel {
+  width: min(640px, 94vw);
+  padding: 34px 36px 30px;
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 4px;
+  background: rgba(14, 16, 14, .72);
+  box-shadow: 0 28px 80px rgba(0,0,0,.32);
+  text-align: center;
+}
+.panel.narrow { width: min(470px, 92vw); }
+.eyebrow { font-size: 11px; letter-spacing: .38em; font-weight: 800; opacity: .64; }
+h1 { margin: 9px 0 16px; font-size: clamp(35px, 6vw, 64px); line-height: .95; letter-spacing: -.05em; font-weight: 900; }
+p { margin: 0 auto 25px; max-width: 550px; line-height: 1.55; color: rgba(244,240,228,.72); }
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 9px;
+  margin: 0 0 24px;
+}
+.controls span {
+  padding: 7px 10px;
+  border: 1px solid rgba(255,255,255,.09);
+  background: rgba(255,255,255,.035);
+  font-size: 12px;
+  color: rgba(255,255,255,.63);
+}
+.controls b { color: #f4eee0; font-weight: 800; }
+
+button {
+  width: min(310px, 100%);
+  border: 1px solid rgba(235,222,190,.34);
+  border-radius: 2px;
+  padding: 15px 20px;
+  color: #17150f;
+  background: #d5c49b;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .14em;
+  cursor: pointer;
+  transition: transform 130ms ease, background 130ms ease;
+}
+button:hover { transform: translateY(-1px); background: #e2d2aa; }
+button:active { transform: translateY(1px); }
+small { display: block; margin-top: 14px; font-size: 11px; color: rgba(255,255,255,.42); }
+
+.loadbar {
+  height: 3px;
+  margin-top: 20px;
+  overflow: hidden;
+  background: rgba(255,255,255,.10);
+}
+.loadbar span {
+  display: block;
+  width: 3%;
+  height: 100%;
+  background: #d8c59a;
+  transition: width 180ms ease;
+}
+.loadbar span.error { background: #c96a5a; }
+
+#crosshair {
+  position: fixed;
+  z-index: 10;
+  left: 50%; top: 50%;
+  width: 12px; height: 12px;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 150ms ease;
+  pointer-events: none;
+}
+#crosshair.visible { opacity: .62; }
+#crosshair i, #crosshair b {
+  position: absolute;
+  display: block;
+  background: rgba(255,255,255,.8);
+  box-shadow: 0 0 3px rgba(0,0,0,.5);
+}
+#crosshair i { left: 5px; top: 1px; width: 1px; height: 10px; }
+#crosshair b { left: 1px; top: 5px; width: 10px; height: 1px; }
+
+.pause {
+  position: fixed;
+  z-index: 20;
+  left: 50%; bottom: 34px;
+  transform: translateX(-50%) translateY(10px);
+  padding: 10px 14px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(10,10,9,.68);
+  backdrop-filter: blur(7px);
+  font-size: 12px;
+  color: rgba(255,255,255,.70);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 160ms ease;
+}
+.pause.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+#debug {
+  position: fixed;
+  z-index: 15;
+  top: 14px; left: 14px;
+  padding: 9px 11px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.46);
+  color: rgba(255,255,255,.70);
+  font: 11px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace;
+  opacity: 0;
+  pointer-events: none;
+}
+#debug.visible { opacity: 1; }
+
+#vignette {
+  position: fixed;
+  z-index: 8;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 56%, rgba(11,12,9,.16) 100%);
+  mix-blend-mode: multiply;
+}
