@@ -1,8 +1,8 @@
 import * as THREE from 'three';
-import { WORLD, ASSETS } from './config.js';
+import { WORLD, ASSETS } from 'config.js';
 import { createTerrain, createRockField, GrassField, terrainHeight } from './terrain.js';
-import { FirstPersonPlayer } from './player.js';
-import { NPCManager } from './npcs.js';
+import { FirstPersonPlayer } from 'player.js';
+import { NPCManager } from 'npcs.js';
 
 const app = document.querySelector('#app');
 const loadingScreen = document.querySelector('#loading');
